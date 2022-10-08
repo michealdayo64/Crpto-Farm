@@ -22,11 +22,10 @@ function Header(props) {
             <ul>
             <Link to="/"><li>Home </li></Link>
             <Link to="/products"><li>Categories </li></Link>
-            <Link to="/"><li>Profile </li></Link>
+            <Link to="/profile"><li>Profile </li></Link>
             <Link to="/cart"><li>Cart </li></Link>
-            <Link to="/"><li>Shopping Interest </li></Link>
-            <Link to="/"><li>Order </li></Link>
-            <Link to="/"><li>Deals </li></Link>
+            <Link to="/shopping-interest"><li>Shopping Interest </li></Link>
+            <Link to="/order"><li>Order </li></Link>
             <Link to="/register"><li>Registration/Login </li></Link>
             </ul>
         </BurgerMenu>
@@ -47,11 +46,10 @@ function Header(props) {
                 <NavList>
                 <Link to="/"><li>Home </li></Link>
             <Link to="/products"><li>Categories </li></Link>
-            <Link to="/"><li>Profile </li></Link>
+            <Link to="/profile"><li>Profile </li></Link>
             <Link to="/cart"><li>Cart </li></Link>
-            <Link to="/"><li>Shopping Interest </li></Link>
-            <Link to="/"><li>Order </li></Link>
-            <Link to="/"><li>Deals </li></Link>
+            <Link to="/shopping-interest"><li>Shopping Interest </li></Link>
+            <Link to="/order"><li>Order </li></Link>
             <Link to="/register"><li>Registration/Login </li></Link>
                 </NavList>
                 </ul>

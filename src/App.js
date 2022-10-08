@@ -9,6 +9,10 @@ import Shipping from "./components/Shipping";
 import PaymentInfo from "./components/PaymentInfo";
 import CardInfo from './components/CardInfo'
 import CryptoPay from "./components/CryptoPay";
+import Profile from "./components/Profile";
+import EditProfile from "./components/EditProfile";
+import ShoppingInterest from "./components/ShoppingInterest";
+import Orderf from "./components/Order";
 
 
 
@@ -60,6 +64,26 @@ function App() {
           <Route path='/crypto-pay'>
             <Header />
             <CryptoPay />
+          </Route>
+
+          <Route path='/profile'>
+            <Header />
+            <Profile />
+          </Route>
+
+          <Route path='/edit-profile'>
+            <Header />
+            <EditProfile />
+          </Route>
+
+          <Route path='/shopping-interest'>
+            <Header />
+            <ShoppingInterest />
+          </Route>
+
+          <Route path='/order'>
+            <Header />
+            <Orderf />
           </Route>
 
 
