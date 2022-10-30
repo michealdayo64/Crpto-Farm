@@ -1,190 +1,86 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
+import Categories from './Categories.js';
+import items from './data.js'
+import cartData from './cartData.js'
+import { Link } from 'react-router-dom'
+
+const mydata = [...new Set(items.map((item) => item.category))];
+//console.log(mydata);
+
 
 function Products() {
-  return (
-    <Container>
-        <Content>
-            <Category>
-            <p>Categories</p>
-            <br />
-            <br />
-            <ul>
-                <li>Agricultural E-book</li>
-                <li>Agricultural equipment</li>
-                <li>Agro machines</li>
-                <li>Farm scales</li>
-                <li>Irrigation</li>
-                <li>Poultry equipment</li>
-                <li>Solar Powered Equipment</li>
-                <li>Agro chemicalsk</li>
-                <li>Animal feeds</li>
-                <li>Dog feed</li>
-                <li>Chicken</li>
-                <li>Farm tools</li>
+    const [listItem, setListItem] = useState(items);
+    const [cat, setCat] = useState(mydata)
+    //const [cart, setCart] = useState()
 
-                <li>Fertilzersk</li>
-                <li>Food stuffk</li>
-                <li>Dried foodk</li>
-                <li>Fruits</li>
-            </ul>
-            </Category>
-            <AllProduct>
-                <ProductAndSearch>
-                <p>All Products</p>
-                <SearchBtn>
-                <input type="text" placeholder='Search' />
-                <p>Search</p>
-                </SearchBtn>
-                
-                </ProductAndSearch>
-            
-            <ListProduct>
-                <SingleProd>
-                <img src='images/apple.jpg' alt='' />
-                <p>Apple, Fuji</p>
-                <p>3LB - $6.10</p>
-                <Cartbtn>
-                    <img src='images/shopping-bag.png' alt='' />
-                    <p>Add to cart</p>
-                </Cartbtn>
-                </SingleProd>
-                <SingleProd>
-                <img src='images/mango.jpg' alt='' />
-                <p>Apple, Fuji</p>
-                <p>3LB - $6.10</p>
-                <Cartbtn>
-                    <img src='images/shopping-bag.png' alt='' />
-                    <p>Add to cart</p>
-                </Cartbtn>
-                </SingleProd>
-                <SingleProd>
-                <img src='images/pepper.jpg' alt='' />
-                <p>Apple, Fuji</p>
-                <p>3LB - $6.10</p>
-                <Cartbtn>
-                    <img src='images/shopping-bag.png' alt='' />
-                    <p>Add to cart</p>
-                </Cartbtn>
-                </SingleProd>
-                <SingleProd>
-                <img src='images/tomatoes.jpg' alt='' />
-                <p>Apple, Fuji</p>
-                <p>3LB - $6.10</p>
-                <Cartbtn>
-                    <img src='images/shopping-bag.png' alt='' />
-                    <p>Add to cart</p>
-                </Cartbtn>
-                </SingleProd>
-                <SingleProd>
-                <img src='images/apple.jpg' alt='' />
-                <p>Apple, Fuji</p>
-                <p>3LB - $6.10</p>
-                <Cartbtn>
-                    <img src='images/shopping-bag.png' alt='' />
-                    <p>Add to cart</p>
-                </Cartbtn>
-                </SingleProd>
-            </ListProduct>
-            <ListProduct>
-                <SingleProd>
-                <img src='images/apple.jpg' alt='' />
-                <p>Apple, Fuji</p>
-                <p>3LB - $6.10</p>
-                <Cartbtn>
-                    <img src='images/shopping-bag.png' alt='' />
-                    <p>Add to cart</p>
-                </Cartbtn>
-                </SingleProd>
-                <SingleProd>
-                <img src='images/mango.jpg' alt='' />
-                <p>Apple, Fuji</p>
-                <p>3LB - $6.10</p>
-                <Cartbtn>
-                    <img src='images/shopping-bag.png' alt='' />
-                    <p>Add to cart</p>
-                </Cartbtn>
-                </SingleProd>
-                <SingleProd>
-                <img src='images/pepper.jpg' alt='' />
-                <p>Apple, Fuji</p>
-                <p>3LB - $6.10</p>
-                <Cartbtn>
-                    <img src='images/shopping-bag.png' alt='' />
-                    <p>Add to cart</p>
-                </Cartbtn>
-                </SingleProd>
-                <SingleProd>
-                <img src='images/tomatoes.jpg' alt='' />
-                <p>Apple, Fuji</p>
-                <p>3LB - $6.10</p>
-                <Cartbtn>
-                    <img src='images/shopping-bag.png' alt='' />
-                    <p>Add to cart</p>
-                </Cartbtn>
-                </SingleProd>
-                <SingleProd>
-                <img src='images/apple.jpg' alt='' />
-                <p>Apple, Fuji</p>
-                <p>3LB - $6.10</p>
-                <Cartbtn>
-                    <img src='images/shopping-bag.png' alt='' />
-                    <p>Add to cart</p>
-                </Cartbtn>
-                </SingleProd>
-            </ListProduct>
-            <ListProduct>
-                <SingleProd>
-                <img src='images/apple.jpg' alt='' />
-                <p>Apple, Fuji</p>
-                <p>3LB - $6.10</p>
-                <Cartbtn>
-                    <img src='images/shopping-bag.png' alt='' />
-                    <p>Add to cart</p>
-                </Cartbtn>
-                </SingleProd>
-                <SingleProd>
-                <img src='images/mango.jpg' alt='' />
-                <p>Apple, Fuji</p>
-                <p>3LB - $6.10</p>
-                <Cartbtn>
-                    <img src='images/shopping-bag.png' alt='' />
-                    <p>Add to cart</p>
-                </Cartbtn>
-                </SingleProd>
-                <SingleProd>
-                <img src='images/pepper.jpg' alt='' />
-                <p>Apple, Fuji</p>
-                <p>3LB - $6.10</p>
-                <Cartbtn>
-                    <img src='images/shopping-bag.png' alt='' />
-                    <p>Add to cart</p>
-                </Cartbtn>
-                </SingleProd>
-                <SingleProd>
-                <img src='images/tomatoes.jpg' alt='' />
-                <p>Apple, Fuji</p>
-                <p>3LB - $6.10</p>
-                <Cartbtn>
-                    <img src='images/shopping-bag.png' alt='' />
-                    <p>Add to cart</p>
-                </Cartbtn>
-                </SingleProd>
-                <SingleProd>
-                <img src='images/apple.jpg' alt='' />
-                <p>Apple, Fuji</p>
-                <p>3LB - $6.10</p>
-                <Cartbtn>
-                    <img src='images/shopping-bag.png' alt='' />
-                    <p>Add to cart</p>
-                </Cartbtn>
-                </SingleProd>
-            </ListProduct>
-            </AllProduct>
-            
-        </Content>
-    </Container>
-  )
+    const getCategory = (cate) => {
+        if (cate === "all") {
+            setListItem(items);
+            return;
+        }
+        const catData = items.filter((cat) => cat.category === cate);
+        //console.log(catData)
+        setListItem(catData);
+        //setCat(mydata)
+    }
+
+    const addToCart = (id) =>{
+        if(id){
+            const getCart = listItem.find((myCart) => myCart.id === id);
+            //setCart([...cart, getCart]);
+            console.log(getCart)
+            getCart.quantity = getCart.quantity + 1
+            cartData.push(getCart);
+            console.log(cartData);
+        }   
+    }
+
+    
+
+
+
+
+    return (
+        <Container>
+            <Content>
+                <Categories cat={cat} getCategory={getCategory} />
+                <AllProduct>
+                    <ProductAndSearch>
+                        <p onClick={() => getCategory("all")}>All Products</p>
+                        <SearchBtn>
+                            <input type="text" placeholder='Search' />
+                            <p>Search</p>
+                        </SearchBtn>
+
+                    </ProductAndSearch>
+
+
+                    <ListProduct>
+                        {listItem.map((itemList) =>
+                        (
+                            <SingleProd key={itemList.id}>
+                                <Link to={`/product-detail/${itemList.id}`}><img src={itemList.img} alt=''/></Link>
+                                <p>{itemList.title}</p>
+                                <p>{itemList.price}</p>
+                                <Link to="/cart">
+                                <Cartbtn  onClick={() => addToCart(itemList.id)}>
+                                    <img src='images/shopping-bag.png' alt='' />
+                                    <p>Add to cart</p>
+                                </Cartbtn>
+                                </Link>
+                            </SingleProd>
+                        )
+                        )}
+                    </ListProduct>
+
+
+
+                </AllProduct>
+
+            </Content>
+        </Container>
+    )
 }
 
 export default Products
@@ -211,42 +107,6 @@ const Content = styled.div`
 
 `
 
-const Category = styled.div`
-    //background-color: red;
-    width: 200px;
-    
-    //top: 2px;
-    height: 400px;
-    overflow-y: scroll;
-    &::-webkit-scrollbar{
-        width: 5px;
-        border: 1px solid black;
-    }
-
-    li{
-        list-style: none;
-        padding-bottom: 10px;
-        cursor: pointer;
-    }
-
-    ul{
-        //padding-top: 20px;
-    }
-
-    p{
-        z-index: 100;
-        position: sticky;
-        //top: 0;
-
-        background-color: white;
-        width: 180px;
-        font-size: 20px;
-        font-weight: bold;
-        
-        //height: 20px;
-    }
-`
-
 const AllProduct = styled.div`
     //background-color: blue;
     width: 950px;
@@ -271,9 +131,13 @@ const ProductAndSearch = styled.div`
 
     p{
         font-size: 20px;
-        //font-weight: bold;
+        font-weight: bold;
         padding-bottom: 10px;
-
+        cursor: pointer;
+        background-color: black;
+        color: white;
+        padding: 10px;
+        border-radius: 5px;
     }
     
 `
@@ -308,9 +172,11 @@ const SearchBtn = styled.div`
 `
 
 const ListProduct = styled.div`
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display: grid;
+    //justify-content: space-between;
+    grid-gap: 25px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    //align-items: center;
 
 
     @media(max-width: 768px){
@@ -327,7 +193,7 @@ const SingleProd = styled.div`
     padding: 20px;
 
     img{
-        width: 150px;
+        width: 100%;
         height: 150px;
         border-radius: 10px;
     }

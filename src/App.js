@@ -13,6 +13,7 @@ import Profile from "./components/Profile";
 import EditProfile from "./components/EditProfile";
 import ShoppingInterest from "./components/ShoppingInterest";
 import Orderf from "./components/Order";
+import ProductDetail from "./components/ProductDetail";
 
 
 
@@ -75,7 +76,6 @@ function App() {
             <Header />
             <EditProfile />
           </Route>
-
           <Route path='/shopping-interest'>
             <Header />
             <ShoppingInterest />
@@ -84,6 +84,11 @@ function App() {
           <Route path='/order'>
             <Header />
             <Orderf />
+          </Route>
+
+          <Route path='/product-detail/:id'>
+            <Header />
+            <ProductDetail />
           </Route>
 
 

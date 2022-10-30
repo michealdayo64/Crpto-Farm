@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
 function Home() {
   return (
@@ -9,9 +10,9 @@ function Home() {
           <h2>A Community Farmers Market 90+ Local Farmers</h2>
           <span>FRESH . LOCAL . SEASONAL</span>
           
-            <Text>
+            <Text><Link to="/products" style={{color: "white"}}>
             SHOP NOW
-            </Text>
+            </Link></Text>
         
         </ImageContent>
       </BackgroundImage>
@@ -48,10 +49,12 @@ function Home() {
         </MyText>
 
         <SocialIcon>
+          <Link to="https://www.facebook.com/kehinde.abubakar.940">
           <img src="images/facebook.png" alt='' />
+          </Link>
           <img src="images/instagram.png" alt='' />
           <img src="images/linkedin.png" alt='' />
-          <img src="images/twitter.png" alt='' />
+          <Link to="https://twitter.com/PCashprince"><img src="images/twitter.png" alt='' /></Link>
         </SocialIcon>
 
         <Mailing>
@@ -62,8 +65,8 @@ function Home() {
 
         <NewsLetter>
           
-          <input type="email" value="" placeholder='Email Address' />
-          <p>Sign Up</p>
+          <input type="email" placeholder='Email Address' />
+          <Link to="/register" style={{ color: "white" }}><p>Sign Up</p></Link>
         </NewsLetter>
 
         <Buttom>
@@ -190,6 +193,7 @@ const Text = styled.div`
     width: 100px;
     margin: auto;
     border-radius: 10px;
+    cursor: pointer;
 `
 
 const Section = styled.div`

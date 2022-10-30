@@ -1,116 +1,153 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+//import styled from 'styled-components'
 
 function Register() {
-  return (
-    <Container>
-        <Content>
-            <FormHead>
-                <h1>Buyer’s login/registration</h1>
-                <hr />
-            </FormHead>
-            
-            <LoginRegister>
-                <LoginForm>
-                    <h1>Login</h1>
-                    <Form1>
-                        <p>Username Or Email</p>
-                        <input type="text" placeholder='Username Or Email'/>
-                        <br />
-                        <br />
-                        <br />
-                        <p>Password</p>
-                        <input type="password" placeholder='password' />
+    const [logReg, isLogReg] = useState(true);
 
-                        <br />
-                        <br />
-                        <RemeForg>
-                            <CheckPass>
-                                <input type="checkbox" />
-                                <p>Remember</p>
-                            </CheckPass>
-                            <Link to="/forgot-password"><p>Forgot Password</p></Link>
-                        </RemeForg>
+    const registerBtn = () => {
+        isLogReg(!logReg)
+    }
 
-                        <br />
-                        <br />
-                        <span>Login</span>
-                        
-                    </Form1>
-                </LoginForm>
-                <RegisterForm>
-                    <h1>Register</h1>
-                    <Form2>
+    return (
+        <Container>
+            <Content>
+                <FormHead>
+                    <h1>Buyer’s login/registration</h1>
+                    <hr />
+                </FormHead>
+
+                <LoginRegister>
+                    {logReg ?
+                        <LoginForm>
+                            <h1>Login</h1>
+                            <Form1>
+                                <p>Username Or Email</p>
+                                <input type="text" placeholder='Username Or Email' />
+                                <br />
+                                <br />
+                                <br />
+                                <p>Password</p>
+                                <input type="password" placeholder='password' />
+
+                                <br />
+                                <br />
+                                <RemeForg>
+                                    <CheckPass>
+                                        <input type="checkbox" />
+                                        <p>Remember</p>
+                                    </CheckPass>
+                                    <Link to="/forgot-password"><p>Forgot Password</p></Link>
+
+                                </RemeForg>
+
+                                <br />
+                                <br />
+                                <div>
+                                    <Link to="/">
+                                    <span>Login</span>
+                                    </Link>
+                                    <u style={{ color: "red", cursor: "pointer" }} onClick={() => isLogReg(!logReg)}>Not a member? register here</u>
+                                </div>
+                            </Form1>
+                        </LoginForm>
+                        :
+                        <RegisterForm>
+                            <h1>Register</h1>
+                            <Form2>
+                                <p>First Name</p>
+                                <input type="text" placeholder='Firstname' />
+                                <br />
+                                <br />
+                                <br />
+                                <p>Last Name</p>
+                                <input type="text" placeholder='Lastname' />
+                                <br />
+                                <br />
+                                <br />
+                                <p>Email</p>
+                                <input type="email" placeholder='Email' />
+                                <br />
+                                <br />
+                                <br />
+                                <p>Password</p>
+                                <input type="password" placeholder='password' />
+                                <br />
+                                <br />
+                                <p>Phone Number</p>
+                                <input type="text" placeholder='Phone number' />
+                                <br />
+                                <br />
+                                <br />
+                                <p>Address</p>
+                                <textarea type="text" placeholder='Address' rows="10" cols="50"></textarea>
+                                <br />
+                                <br />
+                                <br />
+                                <p>Your personal data will be used to support your experience
+                                    throughout this website, to manage access to your account,
+                                    and for other purposes described in our privacy policy.</p>
+
+                                <br />
+                                <br />
+                                <div>
+                                    <span onClick={() => registerBtn()} >Register</span>
+                                    <u style={{ color: "red", cursor: "pointer" }} onClick={() => isLogReg(!logReg)}>already a member? register here</u>
+                                </div>
+                            </Form2>
+                        </RegisterForm>
+                    }
+                </LoginRegister>
+
+                <br />
+                <br />
+                <br />
+
+                <VendorHead>
+                    <h1>Vendor’s login/registration</h1>
+                    <hr />
+                </VendorHead>
+
+                <VendorForm>
+                    <p>Username</p>
+                    <input type="text" placeholder='Username' />
                     <p>Email</p>
-                        <input type="text" placeholder='Email'/>
-                        <br />
-                        <br />
-                        <br />
-                        <p>Password</p>
-                        <input type="password" placeholder='password' />
-                        <br />
-                        <br />
-                        <p>Your personal data will be used to support your experience
-throughout this website, to manage access to your account,
-and for other purposes described in our privacy policy.</p>
+                    <input type="text" placeholder='Email' />
+                    <Gvc>
+                        <p>Get Verification Code</p>
+                        <span>Re-send Code</span>
+                    </Gvc>
+                    <p>First name</p>
+                    <input type="text" placeholder='First name' />
+                    <p>Last name</p>
+                    <input type="text" placeholder='Last name' />
+                    <p>Store name</p>
+                    <input type="text" placeholder='Store name' />
+                    <p>Address 1</p>
+                    <input type="text" placeholder='Address 1' />
+                    <p>Address 2</p>
+                    <input type="text" placeholder='Address 2' />
+                    <p>Country</p>
+                    <input type="text" placeholder='Country' />
+                    <p>City/Town</p>
+                    <input type="text" placeholder='City/Town' />
+                    <p>Local government </p>
+                    <input type="text" placeholder='Local government ' />
+                    <p>Store phone</p>
+                    <input type="text" placeholder='Store phone' />
+                    <p>Password</p>
+                    <input type="password" placeholder='Password' />
+                    <p>Confirm password</p>
+                    <input type="password" placeholder='Confirm password' />
+                    <Reg>
+                        <p>Register</p>
+                    </Reg>
+                </VendorForm>
 
-                        <br />
-                        <br />
-                        <span>Register</span>
-                        
-                    </Form2>
-                </RegisterForm>
-            </LoginRegister>
-
-            <br />
-            <br />
-            <br />
-
-            <VendorHead>
-                <h1>Vendor’s login/registration</h1>
-                <hr />
-            </VendorHead>
-
-            <VendorForm>
-                <p>Username</p>
-                <input type="text" placeholder='Username' />
-                <p>Email</p>
-                <input type="text" placeholder='Email' />
-                <Gvc>
-                    <p>Get Verification Code</p>
-                    <span>Re-send Code</span>
-                </Gvc>
-                <p>First name</p>
-                <input type="text" placeholder='First name' />
-                <p>Last name</p>
-                <input type="text" placeholder='Last name' />
-                <p>Store name</p>
-                <input type="text" placeholder='Store name' />
-                <p>Address 1</p>
-                <input type="text" placeholder='Address 1' />
-                <p>Address 2</p>
-                <input type="text" placeholder='Address 2' />
-                <p>Country</p>
-                <input type="text" placeholder='Country' />
-                <p>City/Town</p>
-                <input type="text" placeholder='City/Town' />
-                <p>Local government </p>
-                <input type="text" placeholder='Local government ' />
-                <p>Store phone</p>
-                <input type="text" placeholder='Store phone' />
-                <p>Password</p>
-                <input type="password" placeholder='Password' />
-                <p>Confirm password</p>
-                <input type="password" placeholder='Confirm password' />
-                <Reg>
-                    <p>Register</p>
-                </Reg>
-            </VendorForm>
-
-        </Content>
-    </Container>
-  )
+            </Content>
+        </Container>
+    )
 }
 
 
@@ -235,6 +272,12 @@ const Form1 = styled.div`
         font-weight: bold;
     }
 
+    div{
+        display: flex;
+        justify-content: space-between;
+        items-align: center;
+    }
+
     
     //width: width: 520px;
 `
@@ -253,6 +296,7 @@ const CheckPass = styled.div`
 
     p{
         margin-left: 10px;
+        text-align: center;
     }
 `
 

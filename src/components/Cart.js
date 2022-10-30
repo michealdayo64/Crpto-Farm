@@ -1,65 +1,125 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
+//import cart from './cartData.js'
+import cartData from './cartData.js'
 
 
 function Cart() {
+  const [deleteCart, setDeleteCart] = useState(cartData)
+
+  const removeCart = (id) => {
+    const data = deleteCart.filter((del) => del.id !== id);
+    if (data.length === 0) {
+      setDeleteCart([]);
+      cartData.length = 0;
+    }
+    setDeleteCart(data)
+
+  }
+
+  const addToSingleCart = (id) => {
+    const data = deleteCart.map((add) => {
+      if (add.id === id) {
+        add.quantity = add.quantity + 1;
+        return { ...add, quantity: add.quantity }
+      }
+      return add
+    })
+    console.log(data)
+    setDeleteCart(data)
+  }
+
+  const removeSingleCart = (id) => {
+    const data = deleteCart.map((add) => {
+      if (add.id === id) {
+        add.quantity = add.quantity - 1;
+        if (add.quantity === 0) {
+          removeCart(add.id);
+        }
+        return { ...add, quantity: add.quantity }
+      }
+      return add
+    })
+    setDeleteCart(data)
+  }
+
+  const clearCart = () => {
+    setDeleteCart([]);
+    cartData.length = 0;
+  }
+
+
+
   return (
     <Container>
       <Content>
-      <SearchBtn>
-                <input type="text" placeholder='Search' />
-                <p>Search</p>
-                </SearchBtn>
-              
-              <CartTable>
-                <table>
-                  <thead>
-                    <tr>
-                    <th>Image</th>
-                    <th>Products</th>
-                    <th>Price</th>
-                    <th>Quantity</th>
-                    <th>Total</th>
-                    <th>Remove</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>
-                        <img src='images/apple.jpg' alt='' /></td>
-                      <td>Apples, Fuji</td>
-                      <td>$6.10</td>
-                      <td>3lb</td>
-                      <td>$6.10</td>
-                      <td>
-                      <DeleteImage>
-                      <img src='images/delete.svg' alt='' />
-                      </DeleteImage>
-                      </td>
-                        
-                        
-                    </tr>
-                    <tr>
-                      <td><img src='images/apple.jpg' alt='' /></td>
-                      <td>Apples, Fuji</td>
-                      <td>$6.10</td>
-                      <td>3lb</td>
-                      <td>$6.10</td>
-                      <td>
-                      <div>
-                      <DeleteImage>
-                      <img src='images/delete.svg' alt='' />
-                      </DeleteImage>
+        <SearchBtn>
+          <input type="text" placeholder='Search' />
+          <p>Search</p>
+        </SearchBtn>
+
+        <CartTable>
+          <table>
+            <thead>
+              <tr>
+                <th>Image</th>
+                <th>Products</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+                <th>remove</th>
+              </tr>
+            </thead>
+            <tbody>
+              {deleteCart.length > 0 ? deleteCart.map((cart) => {
+                return (
+                  <tr key={cart.id}>
+                    <td>
+                      <img src={cart.img} alt='' /></td>
+                    <td>{cart.title}</td>
+                    <td>${cart.price}</td>
+
+                    <td>
+                      <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+                        <p style={{ paddingRight: "15px", fontSize: "20px", fontWeight: "bolder", cursor: "pointer" }} onClick={() => removeSingleCart(cart.id)}>-</p>{cart.quantity}<p style={{ paddingLeft: "15px", fontSize: "20px", fontWeight: "bold", cursor: "pointer" }} onClick={() => addToSingleCart(cart.id)}>+</p>
                       </div>
-                        </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </CartTable>
-              <CheckOutBtn>
-              <p>PROCEED TO CHECKOUT</p>
-              </CheckOutBtn>
-              
+                    </td>
+
+                    <td>${cart.price * cart.quantity}</td>
+
+                    <td>
+                      <DeleteImage onClick={() => removeCart(cart.id)}>
+                        <img src='images/delete.svg' alt='' />
+                      </DeleteImage>
+                    </td>
+
+
+                  </tr>
+                )
+              }) :
+                <tr>
+                  <td><p style={{ textAlign: "center" }}>Cart is empty</p></td>
+                </tr>
+
+              }
+
+
+
+            </tbody>
+          </table>
+        </CartTable>
+        <CheckOutBtn>
+          {deleteCart.length > 0 &&
+            <p>PROCEED TO CHECKOUT</p>
+          }
+
+          {deleteCart.length > 0 &&
+            <div onClick={() => clearCart()}>
+              <p>Clear Cart</p>
+            </div>
+          }
+        </CheckOutBtn>
+
       </Content>
     </Container>
   )
@@ -189,8 +249,8 @@ const DeleteImage = styled.div`
     max-width: 100%;
     max-height: 100%;
     cursor: pointer;
-
-    
+    //background-color: red;
+    //text-color: red;
   }
 
   
@@ -198,7 +258,7 @@ const DeleteImage = styled.div`
 
 const CheckOutBtn = styled.div`
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
 
   p{
     
@@ -206,8 +266,18 @@ const CheckOutBtn = styled.div`
     text-align: right;
     background-color: black;
     color: white;
-    width: 200px;
+    
     padding: 10px;
     border-radius: 10px;
   }
+
+  div{
+    width: 100px;
+    cursor: pointer;
+    p{
+      background-color: red;
+      text-align: center;
+    }
+  }
 `
+
