@@ -1,20 +1,23 @@
-import Header from "./components/Header";
-import Home from "./components/Home";
-import Register from "./components/Register";
+import Header from "./components/userPage/Header";
+import Home from "./components/userPage/Home";
+import Register from "./components/userPage/Register";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import ForgotPass from "./components/ForgotPass";
-import Products from "./components/Products";
-import Cart from "./components/Cart";
-import Shipping from "./components/Shipping";
-import PaymentInfo from "./components/PaymentInfo";
-import CardInfo from "./components/CardInfo";
-import CryptoPay from "./components/CryptoPay";
-import Profile from "./components/Profile";
-import EditProfile from "./components/EditProfile";
-import ShoppingInterest from "./components/ShoppingInterest";
-import Orderf from "./components/Order";
-import ProductDetail from "./components/ProductDetail";
-import routes from "./routes";
+import ForgotPass from "./components/userPage/ForgotPass";
+import Products from "./components/userPage/Products";
+import Cart from "./components/userPage/Cart";
+import Shipping from "./components/userPage/Shipping";
+import PaymentInfo from "./components/userPage/PaymentInfo";
+import CardInfo from "./components/userPage/CardInfo";
+import CryptoPay from "./components/userPage/CryptoPay";
+import Profile from "./components/userPage/Profile";
+import EditProfile from "./components/userPage/EditProfile";
+import ShoppingInterest from "./components/userPage/ShoppingInterest";
+import Orderf from "./components/userPage/Order";
+import ProductDetail from "./components/userPage/ProductDetail";
+import routesAdmin from "./routesAdmin";
+import routesVendor from "./routesVendor";
+import Login from "./components/adminPage/Login";
+import RegisterPage from "./components/adminPage/RegisterPage";
 
 function App() {
   return (
@@ -90,7 +93,32 @@ function App() {
             <ProductDetail />
           </Route>
 
-          {routes.map((route, index) => {
+          <Route path="/admin-login">
+            <Login />
+          </Route>
+
+          <Route path="/admin-register">
+            <RegisterPage />
+          </Route>
+
+          {routesAdmin.map((route, index) => {
+            return (
+              <Route
+                key={index}
+                path={route.path}
+                exact={route.exact}
+                component={(props) => {
+                  return (
+                    <route.layout {...props}>
+                      <route.component {...props} />
+                    </route.layout>
+                  );
+                }}
+              />
+            );
+          })}
+
+          {routesVendor.map((route, index) => {
             return (
               <Route
                 key={index}

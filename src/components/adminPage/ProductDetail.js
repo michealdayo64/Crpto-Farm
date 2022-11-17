@@ -22,10 +22,12 @@ function ProductDetail() {
   ];
 
   const [listData, setListData] = useState(data);
+  const [uniqueData, setUniqueData] = useState(null);
 
   const productId = () => {
-    const vv = listData.filter((prodId) => String(prodId.id) === id);
-    setListData(vv[0]);
+    const vv = data.find((prodId) => String(prodId.id) === id);
+    setUniqueData(vv);
+    console.log(vv);
   };
 
   // eslint-disable-next-line
@@ -44,21 +46,21 @@ function ProductDetail() {
             <CardBody>
               <p>
                 <span style={{ fontWeight: "bold" }}>Title: </span>
-                {listData && listData.title}
+                {uniqueData && uniqueData.title}
               </p>
               <p>
                 <span style={{ fontWeight: "bold" }}>Category: </span>
-                {listData && listData.category}
+                {uniqueData && uniqueData.category}
               </p>
               <p>
                 <span style={{ fontWeight: "bold" }}>Description: </span>
-                {listData && listData.desc}
+                {uniqueData && uniqueData.desc}
               </p>
               <p>
                 <span style={{ fontWeight: "bold" }}>Price: </span>
-                {listData && listData.price}
+                {uniqueData && uniqueData.price}
               </p>
-              <Link to={`/edit-product/${listData.id}`}>
+              <Link to={`/edit-product/${uniqueData && uniqueData.id}`}>
                 <Button>Edit</Button>
               </Link>
             </CardBody>
@@ -68,7 +70,7 @@ function ProductDetail() {
           <Card>
             <CardBody>
               <img
-                src={listData && listData.img}
+                src={uniqueData && uniqueData.img}
                 width="100%"
                 height="250px"
                 alt=""

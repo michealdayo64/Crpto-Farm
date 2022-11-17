@@ -11,7 +11,7 @@ import Button from "./Button";
 import { Form } from "react-bootstrap";
 import TextInputArea from "./TextInputArea";
 import data from "../userPage/data.js";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
 function EditProduct() {
   /*constructor(props) {
@@ -32,29 +32,41 @@ function EditProduct() {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }*/
+
   const { id } = useParams();
-  const [listData, setListData] = useState(data);
-  const [inputData, setInputData] = useState({
-    title: "",
-    category: "",
-    desc: "",
-    price: 0,
-  });
+  //const [listData, setListData] = useState();
+  const [titleInput, setTitleInput] = useState("");
+  const [categoryInput, setCategoryInput] = useState("");
+  const [descInput, setDescInput] = useState("");
+  const [priceInput, setPriceInput] = useState("");
 
   useEffect(() => {
     productId();
   }, [id]);
 
-  function handleChange(e) {
-    const { name, value } = e.target;
-    setInputData({ [name]: value });
-    console.log(inputData.title);
+  function handleChangeTitle(e) {
+    setTitleInput(e.target.value);
+  }
+
+  function handleChangeCategory(e) {
+    setCategoryInput(e.target.value);
+    console.log(e.target.value);
+  }
+
+  function handleChangeDesc(e) {
+    setDescInput(e.target.value);
+  }
+
+  function handleChangePrice(e) {
+    setPriceInput(e.target.value);
   }
 
   function productId() {
-    const vv = listData.filter((prodId) => String(prodId.id) === id);
-    setListData(vv[0]);
-    //setState(hh);
+    const vv = data.find((prodId) => String(prodId.id) === id);
+    setTitleInput(vv.title);
+    setCategoryInput(vv.category);
+    setDescInput(vv.desc);
+    setPriceInput(vv.price);
   }
 
   /*function handleSubmit(e) {
@@ -63,6 +75,19 @@ function EditProduct() {
 
   const submitFormHandler = (event) => {
     event.preventDefault();
+    data.map((item) => {
+      if (item.id === id) {
+        return {
+          ...item,
+          title: titleInput,
+          category: categoryInput,
+          desc: descInput,
+          price: priceInput,
+        };
+      }
+      console.log(item);
+      return item;
+    });
   };
 
   const path = [
@@ -86,42 +111,43 @@ function EditProduct() {
                 <strong className="card-title">Edit Product</strong>
               </div>
               <div className="card-body">
-                <Form onSubmit={() => submitFormHandler()}>
+                <Form onSubmit={submitFormHandler}>
                   <TextInput
                     name="title"
-                    value={listData && listData.title}
+                    value={titleInput}
                     label="Title"
-                    onChange={handleChange}
-                    errorText="please Enter Valid Name"
+                    onChange={handleChangeTitle}
                     inputType="text"
                   />
 
                   <TextInput
                     name="category"
-                    value={listData && listData.category}
+                    value={categoryInput}
                     label="Category"
-                    onChange={() => handleChange()}
+                    onChange={handleChangeCategory}
                     inputType="text"
                   />
                   <TextInputArea
-                    name="description"
+                    name="desc"
                     inputType="text"
-                    value={listData && listData.desc}
+                    value={descInput}
                     label="Description"
                     rows={3}
-                    controlFunc={() => handleChange()}
+                    controlFunc={handleChangeDesc}
                   />
                   <TextInput
                     name="price"
-                    value={listData && String(listData.price)}
+                    value={String(priceInput)}
                     label="Price"
-                    onChange={() => handleChange()}
+                    onChange={handleChangePrice}
                     inputType="text"
                   />
 
-                  <Button onClick={() => null} type="submit">
-                    Save
-                  </Button>
+                  <Link to="/list-product">
+                    <Button onClick={() => null} type="submit">
+                      Save
+                    </Button>
+                  </Link>
                 </Form>
               </div>
             </div>

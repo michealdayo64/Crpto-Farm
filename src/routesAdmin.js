@@ -1,5 +1,5 @@
 import AddProduct from "./components/adminPage/AddProduct";
-import BaseLayout from "./components/adminPage/BaseLayout";
+import BaseLayout from "./components/adminPage/BaseLayout.js";
 import Dashboard from "./components/adminPage/Dashboard";
 import AllProduct from "./components/adminPage/AllProduct";
 import EditProduct from "./components/adminPage/EditProduct";
@@ -8,9 +8,9 @@ import AddUser from "./components/adminPage/AddUser";
 import AllUser from "./components/adminPage/AllUser";
 import EditUser from "./components/adminPage/EditUser";
 import UserDetail from "./components/adminPage/UserDetail";
-import OrderPage from "./components/adminPage/OrderPage";
+import OrderPage from "./components/adminPage/OrderPage.js";
 
-var routes = [
+var routesAdmin = [
   {
     path: "/admin-dashboard",
     layout: BaseLayout,
@@ -70,4 +70,4 @@ var routes = [
   },
 ];
 
-export default routes;
+export default routesAdmin;

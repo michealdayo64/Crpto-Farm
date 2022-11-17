@@ -3,16 +3,11 @@
  **Author URL: http://santoshdash.epizy.com/
  **Github URL: https://github.com/quintuslabs/dashio-admin
  */
-import {
-  AccountBoxSharp,
-  CreditCard,
-  MonetizationOn,
-  ShoppingBag,
-} from "@mui/icons-material";
+import { AccountBoxSharp, ShoppingBag } from "@mui/icons-material";
 import React, { Component } from "react";
-import Card from "./Card";
-import CardBody from "./CardBody";
-import ChartSection from "./ChartSection";
+import Card from "../adminPage/Card";
+import CardBody from "../adminPage/CardBody";
+import ChartSection from "../adminPage/ChartSection";
 
 class Dashboard extends Component {
   constructor(props) {
@@ -24,7 +19,7 @@ class Dashboard extends Component {
       <div className="main-content-container p-4 container-fluid">
         <div className="right-panel">
           <div className="row">
-            <div className="col-lg-3">
+            <div className="col-lg-6">
               <Card borderRadius="5px">
                 <CardBody>
                   <div className="stat-widget-five">
@@ -38,28 +33,6 @@ class Dashboard extends Component {
                         <div className="stat-text">
                           <span className="count">23569</span>
                         </div>
-                        <div className="stat-heading">Total User</div>
-                      </div>
-                    </div>
-                  </div>
-                </CardBody>
-              </Card>
-            </div>
-
-            <div className="col-lg-3">
-              <Card borderRadius="5px">
-                <CardBody>
-                  <div className="stat-widget-five">
-                    <div className="stat-icon dib flat-color-1">
-                      <MonetizationOn
-                        style={{ height: "50px", width: "50px" }}
-                      />
-                    </div>
-                    <div className="stat-content">
-                      <div className="text-left dib">
-                        <div className="stat-text">
-                          $<span className="count">3435</span>
-                        </div>
                         <div className="stat-heading">Total Sales</div>
                       </div>
                     </div>
@@ -67,7 +40,8 @@ class Dashboard extends Component {
                 </CardBody>
               </Card>
             </div>
-            <div className="col-lg-3">
+
+            <div className="col-lg-6">
               <Card borderRadius="5px">
                 <CardBody>
                   <div className="stat-widget-five">
@@ -86,31 +60,6 @@ class Dashboard extends Component {
                           $<span className="count">3435</span>
                         </div>
                         <div className="stat-heading">Total Products</div>
-                      </div>
-                    </div>
-                  </div>
-                </CardBody>
-              </Card>
-            </div>
-            <div className="col-lg-3">
-              <Card borderRadius="5px">
-                <CardBody>
-                  <div className="stat-widget-five">
-                    <div className="stat-icon dib flat-color-1">
-                      <CreditCard
-                        style={{
-                          height: "50px",
-                          width: "50px",
-                          color: "orange",
-                        }}
-                      />
-                    </div>
-                    <div className="stat-content">
-                      <div className="text-left dib">
-                        <div className="stat-text">
-                          $<span className="count">3435</span>
-                        </div>
-                        <div className="stat-heading">Total Orders</div>
                       </div>
                     </div>
                   </div>

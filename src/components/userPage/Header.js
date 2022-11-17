@@ -52,6 +52,7 @@ function Header(props) {
               height: "100px",
               width: "200px",
               marginRight: "20px",
+              paddingBottom: "20px",
             }}
             src="images/crpto_farm.png"
             alt=""
@@ -90,7 +91,7 @@ function Header(props) {
 export default Header;
 
 const Container = styled.div`
-  padding-top: 90px;
+  padding-top: 40px;
   padding-bottom: 40px;
   max-width: 1400px;
   margin: auto;
@@ -232,7 +233,7 @@ const Cart = styled.a`
 `;
 
 const Nav = styled.nav`
-  width: 1000px;
+  width: 900px;
   margin: auto;
   padding-bottom: 20px;
   //background-color: red;
@@ -242,6 +243,8 @@ const NavWrapper = styled.ul``;
 
 const NavList = styled.div`
   //padding: 10px;
+  //background-color: red;
+  margin: auto;
   li {
     display: inline;
     list-style: none;
