@@ -134,7 +134,7 @@ function Cart() {
         </CartTable>
         <CheckOutBtn>
           {deleteCart.length > 0 && (
-            <Link to="/order" style={{ textDecoration: "none" }}>
+            <Link to="/payment-info" style={{ textDecoration: "none" }}>
               <p>PROCEED TO CHECKOUT</p>
             </Link>
           )}

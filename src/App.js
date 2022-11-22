@@ -6,7 +6,7 @@ import ForgotPass from "./components/userPage/ForgotPass";
 import Products from "./components/userPage/Products";
 import Cart from "./components/userPage/Cart";
 import Shipping from "./components/userPage/Shipping";
-import PaymentInfo from "./components/userPage/PaymentInfo";
+import PaymentInfo from "./components/userPage/payments/PaymentInfo";
 import CardInfo from "./components/userPage/CardInfo";
 import CryptoPay from "./components/userPage/CryptoPay";
 import Profile from "./components/userPage/Profile";
@@ -18,6 +18,7 @@ import routesAdmin from "./routesAdmin";
 import routesVendor from "./routesVendor";
 import Login from "./components/adminPage/Login";
 import RegisterPage from "./components/adminPage/RegisterPage";
+import PaymentForm from "./components/userPage/payments/PaymentForm";
 
 function App() {
   return (
@@ -57,6 +58,11 @@ function App() {
           <Route path="/payment-info">
             <Header />
             <PaymentInfo />
+          </Route>
+
+          <Route path="/payment-form">
+            <Header />
+            <PaymentForm />
           </Route>
 
           <Route path="/card-info">
