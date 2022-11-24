@@ -5,19 +5,19 @@ import cartData from "./cartData.js";
 import { Link } from "react-router-dom";
 
 function Cart() {
-  const [deleteCart, setDeleteCart] = useState(cartData);
+  const [allCart, setAllCart] = useState(cartData);
 
   const removeCart = (id) => {
-    const data = deleteCart.filter((del) => del.id !== id);
+    const data = allCart.filter((del) => del.id !== id);
     if (data.length === 0) {
-      setDeleteCart([]);
+      setAllCart([]);
       cartData.length = 0;
     }
-    setDeleteCart(data);
+    setAllCart(data);
   };
 
   const addToSingleCart = (id) => {
-    const data = deleteCart.map((add) => {
+    const data = allCart.map((add) => {
       if (add.id === id) {
         add.quantity = add.quantity + 1;
         return { ...add, quantity: add.quantity };
@@ -25,11 +25,11 @@ function Cart() {
       return add;
     });
     console.log(data);
-    setDeleteCart(data);
+    setAllCart(data);
   };
 
   const removeSingleCart = (id) => {
-    const data = deleteCart.map((add) => {
+    const data = allCart.map((add) => {
       if (add.id === id) {
         add.quantity = add.quantity - 1;
         if (add.quantity === 0) {
@@ -39,11 +39,11 @@ function Cart() {
       }
       return add;
     });
-    setDeleteCart(data);
+    setAllCart(data);
   };
 
   const clearCart = () => {
-    setDeleteCart([]);
+    setAllCart([]);
     cartData.length = 0;
   };
 
@@ -68,8 +68,8 @@ function Cart() {
               </tr>
             </thead>
             <tbody>
-              {deleteCart.length > 0 ? (
-                deleteCart.map((cart) => {
+              {allCart.length > 0 ? (
+                allCart.map((cart) => {
                   return (
                     <tr key={cart.id}>
                       <td>
@@ -133,13 +133,13 @@ function Cart() {
           </table>
         </CartTable>
         <CheckOutBtn>
-          {deleteCart.length > 0 && (
+          {allCart.length > 0 && (
             <Link to="/payment-info" style={{ textDecoration: "none" }}>
               <p>PROCEED TO CHECKOUT</p>
             </Link>
           )}
 
-          {deleteCart.length > 0 && (
+          {allCart.length > 0 && (
             <div onClick={() => clearCart()}>
               <p>Clear Cart</p>
             </div>

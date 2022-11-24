@@ -19,130 +19,141 @@ import routesVendor from "./routesVendor";
 import Login from "./components/adminPage/Login";
 import RegisterPage from "./components/adminPage/RegisterPage";
 import PaymentForm from "./components/userPage/payments/PaymentForm";
+import { createTheme } from "@mui/material";
+import { ThemeProvider } from "@mui/styles";
+import CashOnDelivery from "./components/userPage/payments/CashOnDelivery";
 
 function App() {
+  const theme = createTheme();
   return (
-    <div className="App">
-      <Router>
-        <Switch>
-          <Route exact path="/">
-            <Header />
-            <Home />
-          </Route>
+    <ThemeProvider theme={theme}>
+      <div className="App">
+        <Router>
+          <Switch>
+            <Route exact path="/">
+              <Header />
+              <Home />
+            </Route>
 
-          <Route path="/register">
-            <Header />
-            <Register />
-          </Route>
+            <Route path="/register">
+              <Header />
+              <Register />
+            </Route>
 
-          <Route path="/forgot-password">
-            <Header />
-            <ForgotPass />
-          </Route>
+            <Route path="/forgot-password">
+              <Header />
+              <ForgotPass />
+            </Route>
 
-          <Route path="/products">
-            <Header />
-            <Products />
-          </Route>
+            <Route path="/products">
+              <Header />
+              <Products />
+            </Route>
 
-          <Route path="/cart">
-            <Header />
-            <Cart />
-          </Route>
+            <Route path="/cart">
+              <Header />
+              <Cart />
+            </Route>
 
-          <Route path="/shipping">
-            <Header />
-            <Shipping />
-          </Route>
+            <Route path="/shipping">
+              <Header />
+              <Shipping />
+            </Route>
 
-          <Route path="/payment-info">
-            <Header />
-            <PaymentInfo />
-          </Route>
+            <Route path="/payment-info">
+              <Header />
+              <PaymentInfo />
+            </Route>
 
-          <Route path="/payment-form">
-            <Header />
-            <PaymentForm />
-          </Route>
+            <Route path="/payment-form">
+              <Header />
+              <PaymentForm />
+            </Route>
 
-          <Route path="/card-info">
-            <Header />
-            <CardInfo />
-          </Route>
+            <Route path="/card-info">
+              <Header />
+              <CardInfo />
+            </Route>
 
-          <Route path="/crypto-pay">
-            <Header />
-            <CryptoPay />
-          </Route>
+            <Route path="/cod">
+              <Header />
+              <CashOnDelivery />
+            </Route>
 
-          <Route path="/profile">
-            <Header />
-            <Profile />
-          </Route>
+            <Route path="/crypto-pay">
+              <Header />
+              <CryptoPay />
+            </Route>
 
-          <Route path="/edit-profile">
-            <Header />
-            <EditProfile />
-          </Route>
-          <Route path="/shopping-interest">
-            <Header />
-            <ShoppingInterest />
-          </Route>
+            <Route path="/profile">
+              <Header />
+              <Profile />
+            </Route>
 
-          <Route path="/order">
-            <Header />
-            <Orderf />
-          </Route>
+            <Route path="/edit-profile">
+              <Header />
+              <EditProfile />
+            </Route>
+            <Route path="/shopping-interest">
+              <Header />
+              <ShoppingInterest />
+            </Route>
 
-          <Route path="/product-detail/:id">
-            <Header />
-            <ProductDetail />
-          </Route>
+            <Route path="/order">
+              <Header />
+              <Orderf />
+            </Route>
 
-          <Route path="/admin-login">
-            <Login />
-          </Route>
+            <Route path="/product-detail/:id">
+              <Header />
+              <ProductDetail />
+            </Route>
 
-          <Route path="/admin-register">
-            <RegisterPage />
-          </Route>
+            <Route path="/admin-login">
+              <Login />
+            </Route>
 
-          {routesAdmin.map((route, index) => {
-            return (
-              <Route
-                key={index}
-                path={route.path}
-                exact={route.exact}
-                component={(props) => {
-                  return (
-                    <route.layout {...props}>
-                      <route.component {...props} />
-                    </route.layout>
-                  );
-                }}
-              />
-            );
-          })}
+            <Route path="/admin-register">
+              <RegisterPage />
+            </Route>
 
-          {routesVendor.map((route, index) => {
-            return (
-              <Route
-                key={index}
-                path={route.path}
-                exact={route.exact}
-                component={(props) => {
-                  return (
-                    <route.layout {...props}>
-                      <route.component {...props} />
-                    </route.layout>
-                  );
-                }}
-              />
-            );
-          })}
-        </Switch>
-      </Router>
-    </div>
+            {routesAdmin.map((route, index) => {
+              return (
+                <Route
+                  key={index}
+                  path={route.path}
+                  exact={route.exact}
+                  component={(props) => {
+                    return (
+                      <route.layout {...props}>
+                        <route.component {...props} />
+                      </route.layout>
+                    );
+                  }}
+                />
+              );
+            })}
+
+            {routesVendor.map((route, index) => {
+              return (
+                <Route
+                  key={index}
+                  path={route.path}
+                  exact={route.exact}
+                  component={(props) => {
+                    return (
+                      <route.layout {...props}>
+                        <route.component {...props} />
+                      </route.layout>
+                    );
+                  }}
+                />
+              );
+            })}
+          </Switch>
+        </Router>
+      </div>
+    </ThemeProvider>
   );
 }
 

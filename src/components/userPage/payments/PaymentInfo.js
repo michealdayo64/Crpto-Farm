@@ -19,9 +19,12 @@ function PaymentInfo() {
               <Link to="/payment-form">
                 <p>Debit Card</p>
               </Link>
-              <p>Credit Card</p>
-              <p>Transfer</p>
-              <p>Cash on Delivery</p>
+              <Link to="/payment-form">
+                <p>Credit Card</p>
+              </Link>
+              <Link to="/cod">
+                <p>Cash on Delievry</p>
+              </Link>
               <img src="images/mc.png" alt="" />
               <img src="images/verve.png" alt="" />
               <img src="images/visa.jpg" alt="" />
